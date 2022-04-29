@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/768.43d7e556.chunk.js","mappings":"iKASA,UANkB,SAAAA,GAChB,OAAO","sources":["views/LoginView.jsx"],"sourcesContent":["import React from 'react';\n// import PropTypes from 'prop-types';\n\nconst LoginView = props => {\n  return <div>LoginView</div>;\n};\n\nLoginView.propTypes = {};\n\nexport default LoginView;\n"],"names":["props"],"sourceRoot":""}
