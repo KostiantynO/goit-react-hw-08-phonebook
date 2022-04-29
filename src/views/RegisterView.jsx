@@ -1,12 +1,16 @@
-import { RegisterForm, RegisterViewContainer } from 'components/views';
+import { AuthViewContainer, RegisterForm } from 'components/views';
+import { useLang } from 'hooks';
 import React from 'react';
 // import PropTypes from 'prop-types';
 
 const RegisterView = props => {
+  const lang = useLang();
   return (
-    <RegisterViewContainer>
+    <AuthViewContainer>
+      <p>{lang.registerView.currentPage}</p>
+
       <RegisterForm />
-    </RegisterViewContainer>
+    </AuthViewContainer>
   );
 };
 

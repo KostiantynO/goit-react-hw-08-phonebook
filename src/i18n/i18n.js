@@ -15,14 +15,30 @@ const entities = {
     // UserMenu
     avatar: 'avatar',
 
-    // RegistrationForm
-    registrationForm: {
+    authForm: {
       name: 'name',
       email: 'email',
       phone: 'phone',
       password: 'password',
       formError: 'Please enter all fields',
+    },
+
+    // RegistrationForm
+    registrationForm: {
       registerButtonText: 'Sign Up',
+    },
+
+    // LoginForm
+    loginForm: {
+      loginButtonText: 'Sign In',
+    },
+
+    registerView: {
+      currentPage: 'Sign Up',
+    },
+
+    loginView: {
+      currentPage: 'Sign In',
     },
   },
 
@@ -40,14 +56,30 @@ const entities = {
     // UserMenu
     avatar: 'аватар',
 
-    // RegistrationForm
-    registrationForm: {
+    authForm: {
       name: "ім'я",
       email: 'пошта',
       phone: 'телефон',
       password: 'пароль',
       formError: 'Будь ласка, заповніть всі поля',
+    },
+
+    // RegistrationForm
+    registrationForm: {
       registerButtonText: 'Зареєструватися',
+    },
+
+    // LoginForm
+    loginForm: {
+      loginButtonText: 'Авторизуватися',
+    },
+
+    registerView: {
+      currentPage: 'Реєстрація',
+    },
+
+    loginView: {
+      currentPage: 'Авторизація',
     },
   },
 };

@@ -1,22 +1,28 @@
 import { ButtonStyled } from 'components/common/Button';
 import styled from 'styled-components';
 
-export const RegisterFormLabel = styled.label`
+export const AuthFormStyled = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 280px;
+`;
+
+export const AuthFormLabel = styled.label`
   display: flex;
   flex-direction: column;
   gap: 4px;
-
-  > span {
-    text-transform: capitalize;
-    transition: ${({ theme }) => theme.transition};
-    transition-property: color;
-  }
 `;
 
-export const RegisterFormInput = styled.input`
-  font-size: 1.4rem;
+export const AuthFormLabelText = styled.label`
+  text-transform: capitalize;
+  transition: ${({ theme }) => theme.transition};
+  transition-property: color;
+`;
 
+export const AuthFormInput = styled.input`
   padding: 4px 8px;
+  font-size: 1.4rem;
 
   color: ${({ theme }) => theme.colors.text};
   background-color: ${({ theme: { colors, mode } }) =>
@@ -32,16 +38,8 @@ export const RegisterFormInput = styled.input`
   }
 `;
 
-export const RegisterFormStyled = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-
-  max-width: 280px;
-`;
-
-export const RegisterButtonStyled = styled(ButtonStyled)`
+export const AuthButtonStyled = styled(ButtonStyled)`
   align-self: center;
+  margin-top: 24px;
   text-transform: uppercase;
-  margin-top: 30px;
 `;

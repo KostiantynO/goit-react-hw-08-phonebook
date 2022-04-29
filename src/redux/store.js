@@ -10,24 +10,26 @@ import {
   REGISTER,
   REHYDRATE,
 } from 'redux-persist';
+import { persistedAuthReducer } from './auth';
 import { persistedLangReducer } from './lang';
 import { persistedThemeReducer } from './theme';
 
+const middleware = getDefaultMiddleware => [
+  ...getDefaultMiddleware({
+    // redux-persist
+    serializableCheck: {
+      ignoreActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+  }),
+];
+
 export const store = configureStore({
   reducer: {
-    theme: persistedThemeReducer,
+    auth: persistedAuthReducer,
     lang: persistedLangReducer,
+    theme: persistedThemeReducer,
   },
-
-  middleware: getDefaultMiddleware => [
-    ...getDefaultMiddleware({
-      // redux-persist
-      serializableCheck: {
-        ignoreActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
-    }),
-  ],
-
+  middleware,
   devTools: process.env.NODE_ENV === 'development',
 });
 

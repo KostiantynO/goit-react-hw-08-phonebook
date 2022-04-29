@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 import { Container } from 'components/common';
 
-export const RegisterViewContainer = styled(Container)`
+export const AuthViewContainer = styled(Container)`
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+
   height: calc(100vh - 60px);
+  margin-top: 100px;
 `;

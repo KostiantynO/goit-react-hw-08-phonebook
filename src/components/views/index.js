@@ -1,1 +1,1 @@
-export * from './registerView';
+export * from './authView';
