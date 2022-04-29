@@ -2,8 +2,12 @@ import styled from 'styled-components';
 
 export const AppStyled = styled.div`
   height: 100vh;
-  font-size: 40px;
+
+  font-size: clamp(1rem, 2.1vw, 1.2rem);
+  font-weight: 700;
   color: ${({ theme }) => theme.colors.main};
-  text-transform: uppercase;
+
   background-color: ${({ theme }) => theme.colors.bg};
+
+  transition: background-color ${({ theme }) => theme.transition};
 `;

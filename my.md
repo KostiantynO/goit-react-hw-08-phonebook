@@ -38,3 +38,10 @@ ns # npm start
   <App />
 </BrowserRouter>
 ```
+
+# `2022-04-29`
+
+```shell
+npx mrm@2 lint-staged
+npm i react-redux @reduxjs/toolkit redux-persist
+```

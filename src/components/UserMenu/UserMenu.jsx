@@ -1,5 +1,5 @@
 import { UserMenuStyled } from './UserMenu.styled';
-import { ThemeSwitch } from 'components/common';
+import { LangSwitch, ThemeSwitch } from 'components/common';
 
 export const UserMenu = () => {
   return (
@@ -9,6 +9,7 @@ export const UserMenu = () => {
         UserMenu
       </div>
 
+      <LangSwitch />
       <ThemeSwitch />
     </UserMenuStyled>
   );

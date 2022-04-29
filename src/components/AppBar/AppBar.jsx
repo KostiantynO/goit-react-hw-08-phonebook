@@ -1,13 +1,13 @@
 import { AppBarStyled, HeaderContainer } from './AppBar.styled';
-import { NavBar } from 'components/NavBar';
-import { UserMenu } from 'components/UserMenu';
+import { Navigation } from 'components/Navigation';
 import { AuthNav } from 'components/AuthNav';
+import { UserMenu } from 'components/UserMenu';
 
 export const AppBar = () => {
   return (
     <AppBarStyled>
       <HeaderContainer>
-        <NavBar />
+        <Navigation />
         <AuthNav />
         <UserMenu />
       </HeaderContainer>

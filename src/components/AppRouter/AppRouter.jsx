@@ -1,9 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from 'components/Layout';
+import { chunk } from 'utils';
 
-const LoginView = () => <div>LoginView</div>;
-const ContactsView = () => <div>ContactsView</div>;
-const RegisterView = () => <div>RegisterView</div>;
+const LoginView = chunk('LoginView');
+const ContactsView = chunk('ContactsView');
+const RegisterView = chunk('RegisterView');
+const HomeView = chunk('HomeView');
+const NotFoundView = chunk('NotFoundView');
 
 export const AppRouter = () => {
   const isLoggedIn = false;
@@ -11,6 +14,8 @@ export const AppRouter = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
+        <Route index element={<HomeView />} />
+
         {isLoggedIn ? (
           <Route path="contacts" element={<ContactsView />} />
         ) : (
@@ -19,6 +24,8 @@ export const AppRouter = () => {
             <Route path="register" element={<RegisterView />} />
           </>
         )}
+
+        <Route path="*" element={<NotFoundView />} />
       </Route>
     </Routes>
   );

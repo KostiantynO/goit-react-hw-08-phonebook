@@ -2,7 +2,7 @@ import {
   DayButton,
   NightButton,
   ThemeSwitchStyled,
-} from './ThemeSwitcher.styled';
+} from './ThemeSwitch.styled';
 import { useTheme } from 'styled-components';
 
 export const ThemeSwitch = () => {
