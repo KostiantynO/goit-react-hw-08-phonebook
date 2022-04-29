@@ -13,10 +13,11 @@ grv # git remote -v
 gca "initial" # git add . && git commit "initial"
 gph # git push -u origin HEAD
 
-
 npm i -D prettier eslint prop-types
 
-npm i axios styled-components react-icons react-hot-toast
+npm i react-router-dom axios styled-components react-icons react-toastify
+
+ns # npm start
 ```
 
 # `package.json`
