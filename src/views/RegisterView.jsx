@@ -1,8 +1,13 @@
+import { RegisterForm, RegisterViewContainer } from 'components/views';
 import React from 'react';
 // import PropTypes from 'prop-types';
 
 const RegisterView = props => {
-  return <div>RegisterView</div>;
+  return (
+    <RegisterViewContainer>
+      <RegisterForm />
+    </RegisterViewContainer>
+  );
 };
 
 RegisterView.propTypes = {};

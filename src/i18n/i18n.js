@@ -14,6 +14,16 @@ const entities = {
 
     // UserMenu
     avatar: 'avatar',
+
+    // RegistrationForm
+    registrationForm: {
+      name: 'name',
+      email: 'email',
+      phone: 'phone',
+      password: 'password',
+      formError: 'Please enter all fields',
+      registerButtonText: 'Sign Up',
+    },
   },
 
   [ids.ukr]: {
@@ -29,6 +39,16 @@ const entities = {
 
     // UserMenu
     avatar: 'аватар',
+
+    // RegistrationForm
+    registrationForm: {
+      name: "ім'я",
+      email: 'пошта',
+      phone: 'телефон',
+      password: 'пароль',
+      formError: 'Будь ласка, заповніть всі поля',
+      registerButtonText: 'Зареєструватися',
+    },
   },
 };
 

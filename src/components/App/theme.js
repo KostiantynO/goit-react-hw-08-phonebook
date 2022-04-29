@@ -10,16 +10,16 @@ export const base = {
 };
 
 export const dark = {
-  accent: '#2196f3',
+  accent: '#4851f4',
   main: '#bbb',
   bg: '#1f2023',
-  nav: '#27282b',
+  nav: '#555',
   border: '#303236',
   text: '#f8f8f8',
 };
 
 export const light = {
-  accent: '#4851f4',
+  accent: '#2196f3',
   main: '#212121',
   bg: '#ffffff',
   nav: '#f8f8f8',

@@ -9,7 +9,7 @@ export const Navigation = () => {
   return (
     <NavigationStyled>
       <NavLink to="/">{lang.main}</NavLink>
-      <NavLink to="/todos">{lang.todos}</NavLink>
+      {/* <NavLink to="/todos">{lang.todos}</NavLink> */}
       {isLoggedIn && <NavLink to="/contacts">{lang.contacts}</NavLink>}
     </NavigationStyled>
   );
