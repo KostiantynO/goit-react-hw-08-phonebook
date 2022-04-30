@@ -11,7 +11,7 @@ import {
   AuthFormLabel,
   AuthFormStyled,
   AuthFormLabelText,
-} from '../RegisterForm/AuthForm.styled';
+} from '../AuthForm.styled';
 
 export const LoginForm = () => {
   const lang = useLang();
@@ -25,7 +25,7 @@ export const LoginForm = () => {
     if (!email || !password) {
       return toast.error(lang.authForm.formError);
     }
-    dispatch(authOperations.register({ email, password }));
+    dispatch(authOperations.logIn({ email, password }));
     form.reset();
   };
 
@@ -45,7 +45,7 @@ export const LoginForm = () => {
         />
       </AuthFormLabel>
 
-      <AuthButtonStyled type="submit">
+      <AuthButtonStyled primary type="submit">
         {lang.loginForm.loginButtonText}
       </AuthButtonStyled>
     </AuthFormStyled>

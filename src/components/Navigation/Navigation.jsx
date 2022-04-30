@@ -1,6 +1,5 @@
 import { useLang } from 'hooks';
-import { NavLink } from 'react-router-dom';
-import { NavigationStyled } from './Navigation.styled';
+import { NavigationStyled, NavLinkStyled } from './Navigation.styled';
 
 export const Navigation = () => {
   const lang = useLang();
@@ -8,9 +7,11 @@ export const Navigation = () => {
 
   return (
     <NavigationStyled>
-      <NavLink to="/">{lang.main}</NavLink>
-      {/* <NavLink to="/todos">{lang.todos}</NavLink> */}
-      {isLoggedIn && <NavLink to="/contacts">{lang.contacts}</NavLink>}
+      <NavLinkStyled to="/">{lang.main}</NavLinkStyled>
+      {/* <NavLinkStyled to="/todos">{lang.todos}</NavLinkStyled> */}
+      {isLoggedIn && (
+        <NavLinkStyled to="/contacts">{lang.contacts}</NavLinkStyled>
+      )}
     </NavigationStyled>
   );
 };

@@ -1,26 +1,43 @@
 import styled from 'styled-components';
 
-export const ButtonStyled = styled.button.attrs(type => ({
+export const ButtonStyled = styled.button.attrs(({ type }) => ({
   type: type ? type : 'button',
 }))`
   display: flex;
-  padding: 12px 20px;
+  padding: ${({ primary }) => (primary ? '16px 20px' : '2px 4px')};
+
   font-size: 1rem;
   font-weight: 700;
-  color: ${({ theme }) => theme.colors.text};
-  background: ${({ theme }) => theme.colors.nav};
-  /* border: 1px solid ${({ theme }) => theme.colors.border}; */
+  color: ${({ theme: { colors, mode }, primary }) =>
+    primary
+      ? colors.white
+      : mode === 'dark'
+      ? colors.bgBtnSecondary
+      : colors.black};
+
   cursor: pointer;
-  transition: ${({ theme }) => theme.transition};
-  transition-property: color, background-color;
+
+  background-color: ${({ theme: { mode, colors }, primary }) =>
+    primary
+      ? colors.accent
+      : mode === 'dark'
+      ? 'transparent'
+      : colors.bgBtnSecondary};
+
+  border: none;
   border-radius: 4px;
+  box-shadow: ${({ theme, icon }) =>
+    icon ? 'none' : theme.colors.shadowDrawer};
 
-  :hover {
-    color: ${({ theme }) => theme.colors.bg};
-    background-color: ${({ theme }) => theme.colors.accent};
-  }
+  transition: ${({ theme }) => theme.transition};
+  transition-property: color, background-color, box-shadow, transform;
 
+  :hover,
   :focus {
-    background-color: ${({ theme }) => theme.colors.accent};
+    color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme, primary }) =>
+      primary ? theme.colors.bgHeroBtn : theme.colors.accent};
+
+    transform: scale(1.02);
   }
 `;

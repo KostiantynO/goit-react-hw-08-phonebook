@@ -12,7 +12,7 @@ export const ThemeSwitchStyled = styled.div`
   border-radius: 24px;
   height: 28px;
 
-  padding: 2px;
+  padding: 8px;
 
   > span {
     position: absolute;
@@ -40,7 +40,7 @@ export const ThemeSwitchStyled = styled.div`
 
 export const DayButton = styled.button`
   background-color: ${({ theme: { colors, mode } }) =>
-    mode === 'dark' ? colors.accent : colors.accent};
+    mode === 'dark' ? '#ddd' : colors.accent};
 `;
 
 export const NightButton = styled.button`

@@ -1,14 +1,13 @@
-import { AuthViewContainer, LoginForm } from 'components/views';
-import { useLang } from 'hooks';
-import React from 'react';
-// import PropTypes from 'prop-types';
+import {
+  AuthViewContainer,
+  AuthPageIndicator,
+  LoginForm,
+} from 'components/views';
 
-const LoginView = props => {
-  const lang = useLang();
-
+const LoginView = () => {
   return (
     <AuthViewContainer>
-      <p>{lang.loginView.currentPage}</p>
+      <AuthPageIndicator />
 
       <LoginForm />
     </AuthViewContainer>

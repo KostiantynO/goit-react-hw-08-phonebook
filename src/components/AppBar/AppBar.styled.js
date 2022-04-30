@@ -21,6 +21,7 @@ export const AppBarStyled = styled.header`
 
 export const HeaderContainer = styled(Container)`
   display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: 12px;
 `;

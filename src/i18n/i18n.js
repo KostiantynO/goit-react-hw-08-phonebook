@@ -12,8 +12,11 @@ const entities = {
     // HomeView
     welcomeMessage: 'Welcome page of our service 💁‍♀️',
 
-    // UserMenu
-    avatar: 'avatar',
+    userMenu: {
+      avatar: 'avatar',
+      logOutButtonText: 'Log Out',
+      greeting: 'welcome',
+    },
 
     authForm: {
       name: 'name',
@@ -53,8 +56,11 @@ const entities = {
     // HomeView
     welcomeMessage: 'Вітальна сторінка нашого сервісу 💁‍♀️',
 
-    // UserMenu
-    avatar: 'аватар',
+    userMenu: {
+      avatar: 'аватар',
+      logOutButtonText: 'Вийти',
+      greeting: 'вітаємо',
+    },
 
     authForm: {
       name: "ім'я",

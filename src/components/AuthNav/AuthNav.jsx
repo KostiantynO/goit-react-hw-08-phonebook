@@ -1,14 +1,15 @@
 import { useLang } from 'hooks';
-import { NavLink } from 'react-router-dom';
+
 import { AuthNavStyled } from './AuthNav.styled';
+import { NavLinkStyled } from 'components/Navigation/Navigation.styled';
 
 export const AuthNav = () => {
   const lang = useLang();
 
   return (
     <AuthNavStyled>
-      <NavLink to="register">{lang.register}</NavLink>
-      <NavLink to="login">{lang.login}</NavLink>
+      <NavLinkStyled to="/register">{lang.register}</NavLinkStyled> |
+      <NavLinkStyled to="/login">{lang.login}</NavLinkStyled>
     </AuthNavStyled>
   );
 };

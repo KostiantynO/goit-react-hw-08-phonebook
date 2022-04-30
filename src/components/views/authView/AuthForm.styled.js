@@ -15,6 +15,7 @@ export const AuthFormLabel = styled.label`
 `;
 
 export const AuthFormLabelText = styled.label`
+  font-weight: 700;
   text-transform: capitalize;
   transition: ${({ theme }) => theme.transition};
   transition-property: color;

@@ -18,7 +18,7 @@ export const langSlice = createSlice({
 export const { setCurrentLang } = langSlice.actions;
 
 const persistConfig = {
-  key: 'KO-goit-react-hw-08-phonebook-lang',
+  key: 'lang',
   storage,
 };
 

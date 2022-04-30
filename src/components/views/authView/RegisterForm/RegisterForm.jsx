@@ -11,7 +11,7 @@ import {
   AuthFormLabel,
   AuthFormStyled,
   AuthFormLabelText,
-} from './AuthForm.styled';
+} from '../AuthForm.styled';
 
 export const RegisterForm = () => {
   const lang = useLang();
@@ -51,7 +51,7 @@ export const RegisterForm = () => {
         />
       </AuthFormLabel>
 
-      <AuthButtonStyled type="submit">
+      <AuthButtonStyled primary type="submit">
         {lang.registrationForm.registerButtonText}
       </AuthButtonStyled>
     </AuthFormStyled>

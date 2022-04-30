@@ -6,6 +6,6 @@ export const AuthViewContainer = styled(Container)`
   flex-direction: column;
   align-items: center;
 
-  height: calc(100vh - 60px);
-  margin-top: 100px;
+  height: calc(100% - 100px);
+  padding-top: 100px;
 `;

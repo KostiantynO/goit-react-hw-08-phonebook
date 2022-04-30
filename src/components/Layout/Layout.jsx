@@ -2,14 +2,22 @@ import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { AppBar } from 'components/AppBar';
 
+import styled from 'styled-components';
+
+const Content = styled.div`
+  height: calc(100% - 70px);
+`;
+
 export const Layout = () => {
   return (
-    <div>
+    <>
       <AppBar />
 
-      <Suspense fallback="...">
-        <Outlet />
+      <Suspense fallback="">
+        <Content>
+          <Outlet />
+        </Content>
       </Suspense>
-    </div>
+    </>
   );
 };

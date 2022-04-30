@@ -11,21 +11,41 @@ const initialState = {
   error: null,
 };
 
+const onAuthFulfilled = (state, payload) => {
+  state.user = payload.user;
+  state.token = payload.token;
+  state.isLoggedIn = true;
+  state.loading = false;
+  return state;
+};
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: {
-    [authOperations.register.fulfilled](state, { payload }) {
-      state.user = payload.user;
-      state.token = payload.token;
-      state.isLoggedIn = true;
+    [authOperations.register.pending](state) {
+      state.error = null;
+      state.loading = true;
     },
-    [authOperations.register.pending](state, { payload }) {},
-    [authOperations.register.rejected](state, { payload }) {},
+    [authOperations.register.fulfilled](state, { payload }) {
+      onAuthFulfilled(state, payload);
+    },
+    [authOperations.register.rejected](state, { payload }) {
+      state.error = payload;
+      state.loading = false;
+    },
 
-    [authOperations.logIn.fulfilled](state, { payload }) {},
-    [authOperations.logIn.pending](state, { payload }) {},
-    [authOperations.logIn.rejected](state, { payload }) {},
+    [authOperations.logIn.pending](state) {
+      state.error = null;
+      state.loading = true;
+    },
+    [authOperations.logIn.fulfilled](state, { payload }) {
+      onAuthFulfilled(state, payload);
+    },
+    [authOperations.logIn.rejected](state, { payload }) {
+      state.error = payload;
+      state.loading = false;
+    },
   },
 });
 

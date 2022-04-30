@@ -17,7 +17,7 @@ export const themeSlice = createSlice({
 export const { setTheme } = themeSlice.actions;
 
 const persistConfig = {
-  key: 'KO-goit-react-hw-08-phonebook-theme',
+  key: 'theme',
   storage,
 };
 
