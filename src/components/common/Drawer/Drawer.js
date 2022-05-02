@@ -44,7 +44,7 @@ export const Drawer = ({ children }) => {
   return createPortal(
     <DrawerBackdrop isOpen={isOpen} onClick={handleBackdropClick}>
       <DrawerContent isOpen={isOpen}>
-        <CloseDrawerButton onClick={hideDrawer} icon autoFocus>
+        <CloseDrawerButton onClick={hideDrawer} icon>
           <AiOutlineClose size={32} />
         </CloseDrawerButton>
 

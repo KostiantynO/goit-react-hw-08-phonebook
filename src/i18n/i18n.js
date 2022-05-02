@@ -43,6 +43,10 @@ const entities = {
     loginView: {
       currentPage: 'Sign In',
     },
+
+    contactsView: {
+      filterDesc: 'Filter by name/number',
+    },
   },
 
   [ids.ukr]: {
@@ -86,6 +90,10 @@ const entities = {
 
     loginView: {
       currentPage: 'Авторизація',
+    },
+
+    contactsView: {
+      filterDesc: 'Фільтрувати за іменем/номером',
     },
   },
 };

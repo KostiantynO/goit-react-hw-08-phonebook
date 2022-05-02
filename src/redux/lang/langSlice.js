@@ -1,7 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { i18n } from 'i18n/i18n';
-import { persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
 
 export const langSlice = createSlice({
   name: 'lang',
@@ -17,14 +15,6 @@ export const langSlice = createSlice({
 
 export const { setCurrentLang } = langSlice.actions;
 
-const persistConfig = {
-  key: 'lang',
-  storage,
-};
-
 export const getCurrentLang = state => state.lang.currentLang;
 
-export const persistedLangReducer = persistReducer(
-  persistConfig,
-  langSlice.reducer
-);
+export const langReducer = langSlice.reducer;

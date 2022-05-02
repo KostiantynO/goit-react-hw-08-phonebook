@@ -13,8 +13,11 @@ import authSelectors from 'redux/auth/authSelectors';
 import styled from 'styled-components';
 import authOperations from 'redux/auth/authOperations';
 import { useLang } from 'hooks';
+import { closeDrawer } from 'redux/drawer';
 
-const UserName = styled.b``;
+const UserName = styled.b`
+  transition: color ${({ theme }) => theme.transition};
+`;
 
 export const UserMenu = () => {
   const lang = useLang();
@@ -22,7 +25,10 @@ export const UserMenu = () => {
   const name = useSelector(authSelectors.getUserName);
   // const token = useSelector(authSelectors.getToken);
   const avatar = false;
-  const logOut = () => dispatch(authOperations.logOut());
+  const logOut = () => {
+    dispatch(authOperations.logOut());
+    dispatch(closeDrawer());
+  };
 
   return (
     <UserMenuStyled>

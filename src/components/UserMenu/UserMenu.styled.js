@@ -13,6 +13,7 @@ export const UserMenuStyled = styled.div`
 export const UserWelcomeWrapper = styled.div`
   display: flex;
   min-width: 160px;
+  color: ${({ theme }) => theme.colors.main};
 `;
 
 export const LogOutButton = styled(ButtonStyled)`
@@ -35,6 +36,7 @@ export const UserAvatar = styled.img`
 export const WelcomeText = styled.b`
   margin-right: 12px;
   text-transform: capitalize;
+  transition: color ${({ theme }) => theme.transition};
 `;
 
 export const LangThemeWrapper = styled.div`

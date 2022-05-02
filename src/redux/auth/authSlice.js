@@ -11,10 +11,22 @@ const initialState = {
   error: null,
 };
 
+const onAuthPending = state => {
+  state.error = null;
+  state.loading = true;
+  return state;
+};
+
 const onAuthFulfilled = (state, payload) => {
   state.user = payload.user;
   state.token = payload.token;
   state.isLoggedIn = true;
+  state.loading = false;
+  return state;
+};
+
+const onAuthRejected = (state, payload) => {
+  state.error = payload;
   state.loading = false;
   return state;
 };
@@ -24,27 +36,31 @@ const authSlice = createSlice({
   initialState,
   extraReducers: {
     [authOperations.register.pending](state) {
-      state.error = null;
-      state.loading = true;
+      onAuthPending(state);
     },
     [authOperations.register.fulfilled](state, { payload }) {
       onAuthFulfilled(state, payload);
     },
     [authOperations.register.rejected](state, { payload }) {
-      state.error = payload;
-      state.loading = false;
+      onAuthRejected(state, payload);
     },
 
     [authOperations.logIn.pending](state) {
-      state.error = null;
-      state.loading = true;
+      onAuthPending(state);
     },
     [authOperations.logIn.fulfilled](state, { payload }) {
       onAuthFulfilled(state, payload);
     },
     [authOperations.logIn.rejected](state, { payload }) {
-      state.error = payload;
-      state.loading = false;
+      onAuthRejected(state, payload);
+    },
+
+    [authOperations.logOut.pending]: state => {
+      onAuthPending(state);
+    },
+    [authOperations.logOut.fulfilled]: () => initialState,
+    [authOperations.logOut.rejected]: (state, { payload }) => {
+      onAuthRejected(state, payload);
     },
   },
 });

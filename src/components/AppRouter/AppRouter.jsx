@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from 'components/Layout';
 import { chunk } from 'utils';
+import { useAuth } from 'hooks';
 
 const LoginView = chunk('LoginView');
 const ContactsView = chunk('ContactsView');
@@ -9,7 +10,7 @@ const HomeView = chunk('HomeView');
 const NotFoundView = chunk('NotFoundView');
 
 export const AppRouter = () => {
-  const isLoggedIn = false;
+  const { isLoggedIn } = useAuth();
 
   return (
     <Routes>

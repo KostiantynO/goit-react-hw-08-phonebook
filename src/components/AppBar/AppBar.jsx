@@ -1,14 +1,15 @@
+import { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+import { openDrawer } from 'redux/drawer';
+import { useAuth } from 'hooks';
+
 import { AppBarStyled, HeaderContainer } from './AppBar.styled';
 import { Navigation } from 'components/Navigation';
 import { AuthNav } from 'components/AuthNav';
-import { UserMenu } from 'components/UserMenu';
-import { Drawer } from 'components/common';
 import { ButtonStyled } from 'components/common/Button';
-import { openDrawer } from 'redux/drawer';
-import { useDispatch } from 'react-redux';
-import { useCallback } from 'react';
-
 import { GiHamburgerMenu } from 'react-icons/gi';
+import { Drawer } from 'components/common';
+import { UserMenu } from 'components/UserMenu';
 
 export const AppBar = () => {
   const dispatch = useDispatch();
@@ -16,19 +17,26 @@ export const AppBar = () => {
     dispatch(openDrawer());
   }, [dispatch]);
 
+  const { isLoggedIn } = useAuth();
+
   return (
     <AppBarStyled>
       <HeaderContainer>
         <Navigation />
-        <AuthNav />
 
-        <ButtonStyled onClick={showDrawer} icon>
-          <GiHamburgerMenu size={32} />
-        </ButtonStyled>
+        {!isLoggedIn && <AuthNav />}
 
-        <Drawer>
-          <UserMenu />
-        </Drawer>
+        {isLoggedIn && (
+          <>
+            <ButtonStyled onClick={showDrawer} icon>
+              <GiHamburgerMenu size={32} />
+            </ButtonStyled>
+
+            <Drawer>
+              <UserMenu />
+            </Drawer>
+          </>
+        )}
       </HeaderContainer>
     </AppBarStyled>
   );

@@ -1,11 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
 
 const drawerSlice = createSlice({
   name: 'drawer',
   initialState: {
-    isOpen: true,
+    isOpen: false,
   },
   reducers: {
     openDrawer: state => void (state.isOpen = true),
@@ -17,12 +15,4 @@ export const { openDrawer, closeDrawer } = drawerSlice.actions;
 
 export const getIsDrawerOpen = state => state.drawer.isOpen;
 
-const persistConfig = {
-  key: 'drawer',
-  storage,
-};
-
-export const persistedDrawerReducer = persistReducer(
-  persistConfig,
-  drawerSlice.reducer
-);
+export const drawerReducer = drawerSlice.reducer;

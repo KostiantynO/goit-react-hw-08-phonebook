@@ -1,6 +1,7 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
 import {
+  persistReducer,
   persistStore,
   FLUSH,
   PAUSE,
@@ -11,11 +12,13 @@ import {
 } from 'redux-persist';
 
 import { persistedAuthReducer } from './auth';
-import { persistedDrawerReducer } from './drawer';
-import { persistedLangReducer } from './lang';
-import { persistedThemeReducer } from './theme';
+import { drawerReducer } from './drawer';
+import { langReducer } from './lang';
+import { themeReducer } from './theme';
 
 import { setupListeners } from '@reduxjs/toolkit/query';
+import { contactsApiReducer } from './contacts';
+import storage from 'redux-persist/lib/storage';
 
 const middleware = getDefaultMiddleware => [
   ...getDefaultMiddleware({
@@ -26,13 +29,24 @@ const middleware = getDefaultMiddleware => [
   }),
 ];
 
+const rootPersistConfig = {
+  key: 'root',
+  storage,
+  blacklist: ['auth', 'contacts'],
+};
+
+const rootReducer = combineReducers({
+  auth: persistedAuthReducer,
+  contacts: contactsApiReducer,
+  lang: langReducer,
+  theme: themeReducer,
+  drawer: drawerReducer,
+});
+
+const persistedRootReducer = persistReducer(rootPersistConfig, rootReducer);
+
 export const store = configureStore({
-  reducer: {
-    auth: persistedAuthReducer,
-    lang: persistedLangReducer,
-    theme: persistedThemeReducer,
-    drawer: persistedDrawerReducer,
-  },
+  reducer: persistedRootReducer,
   middleware,
   devTools: process.env.NODE_ENV === 'development',
 });
