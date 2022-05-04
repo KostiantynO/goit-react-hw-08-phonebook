@@ -8,6 +8,7 @@ const ContactsView = chunk('ContactsView');
 const RegisterView = chunk('RegisterView');
 const HomeView = chunk('HomeView');
 const NotFoundView = chunk('NotFoundView');
+const UPAView = chunk('UPAView');
 
 export const AppRouter = () => {
   const { isLoggedIn } = useAuth();
@@ -18,7 +19,10 @@ export const AppRouter = () => {
         <Route index element={<HomeView />} />
 
         {isLoggedIn ? (
-          <Route path="contacts" element={<ContactsView />} />
+          <>
+            <Route path="contacts" element={<ContactsView />} />
+            <Route path="upa" element={<UPAView />} />
+          </>
         ) : (
           <>
             <Route path="login" element={<LoginView />} />

@@ -1,3 +1,4 @@
+import { Section } from 'components/common';
 import {
   AuthViewContainer,
   RegisterForm,
@@ -6,10 +7,12 @@ import {
 
 const RegisterView = () => {
   return (
-    <AuthViewContainer>
-      <AuthPageIndicator />
-      <RegisterForm />
-    </AuthViewContainer>
+    <Section>
+      <AuthViewContainer>
+        <AuthPageIndicator />
+        <RegisterForm />
+      </AuthViewContainer>
+    </Section>
   );
 };
 

@@ -8,6 +8,7 @@ const entities = {
     register: 'register',
     login: 'login',
     contacts: 'contacts',
+    upa: 'UPA',
 
     // HomeView
     welcomeMessage: 'Welcome page of our service 💁‍♀️',
@@ -47,6 +48,10 @@ const entities = {
     contactsView: {
       filterDesc: 'Filter by name/number',
     },
+
+    upaView: {
+      upa: 'Ukrainian Insurgent Army (resistance to the nkvd and the execution of civilians)',
+    },
   },
 
   [ids.ukr]: {
@@ -56,6 +61,7 @@ const entities = {
     register: 'реєстрація',
     login: 'логін',
     contacts: 'контакти',
+    upa: 'УПА',
 
     // HomeView
     welcomeMessage: 'Вітальна сторінка нашого сервісу 💁‍♀️',
@@ -94,6 +100,10 @@ const entities = {
 
     contactsView: {
       filterDesc: 'Фільтрувати за іменем/номером',
+    },
+
+    upaView: {
+      upa: 'Українська повстанська армія (спротив нквд та розстрілу мирного населення)',
     },
   },
 };

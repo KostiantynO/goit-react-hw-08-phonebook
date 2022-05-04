@@ -27,8 +27,8 @@ const contactsApi = createApi({
 
   endpoints: builder => ({
     createContact: builder.mutation({
-      query: ({ id, ...body }) => ({
-        url: `${contactsURL}/${id}`,
+      query: body => ({
+        url: `${contactsURL}`,
         method: 'POST',
         body,
       }),
@@ -62,18 +62,13 @@ const contactsApi = createApi({
   }),
 });
 
+export const contactsMiddleware = contactsApi.middleware;
+
 export const {
   useCreateContactMutation,
   useReadContactsQuery,
   useUpdateContactMutation,
   useDeleteContactMutation,
 } = contactsApi;
-export const contactsApiReducer = contactsApi.reducer;
 
-// const contactsPersistConfig = {
-//   key: 'contacts',
-//   storage,
-//   blacklist: [contactsApi.reducerPath],
-//   // timeout: null,
-//   // transforms: [encryptor],
-// };
+export const contactsApiReducer = contactsApi.reducer;

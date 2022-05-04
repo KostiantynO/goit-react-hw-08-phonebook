@@ -3,7 +3,6 @@ import { Container } from 'components/common';
 
 export const AppBarStyled = styled.header`
   position: relative;
-
   padding: 12px 0;
 
   ::after {
@@ -23,11 +22,11 @@ export const HeaderContainer = styled(Container)`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 36px;
+  height: 36px;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints[1]}) {
+  /* @media screen and (min-width: ${({ theme }) => theme.breakpoints[1]}) {
     justify-content: space-evenly;
-  }
+  } */
 
   gap: 12px;
 `;

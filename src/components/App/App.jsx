@@ -13,7 +13,7 @@ export const App = () => {
       <>
         <GlobalStyle />
 
-        <AppStyled className="App">
+        <AppStyled className="App" title="App">
           <AppRouter />
         </AppStyled>
       </>

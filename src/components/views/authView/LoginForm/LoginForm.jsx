@@ -1,5 +1,3 @@
-// import PropTypes from 'prop-types'
-
 import { useLang } from 'hooks';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';

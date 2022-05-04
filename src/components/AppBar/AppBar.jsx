@@ -20,8 +20,8 @@ export const AppBar = () => {
   const { isLoggedIn } = useAuth();
 
   return (
-    <AppBarStyled>
-      <HeaderContainer>
+    <AppBarStyled title="AppBar" className="AppBar">
+      <HeaderContainer title="HeaderContainer" className="HeaderContainer">
         <Navigation />
 
         {!isLoggedIn && <AuthNav />}

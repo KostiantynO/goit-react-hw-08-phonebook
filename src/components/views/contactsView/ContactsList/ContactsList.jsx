@@ -1,3 +1,16 @@
-export const ContactsList = () => {
-  return <div>ContactsList</div>;
+import { ContactsListStyled } from './ContactsList.styled';
+import { Contact } from '../Contact';
+import PropTypes from 'prop-types';
+
+export const ContactsList = ({ contacts }) =>
+  console.log(contacts) || (
+    <ContactsListStyled>
+      {contacts.map(({ id, name, number }) => (
+        <Contact key={id} id={id} name={name} number={number} />
+      ))}
+    </ContactsListStyled>
+  );
+
+ContactsList.propTypes = {
+  contacts: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
 };

@@ -12,7 +12,7 @@ export const ButtonStyled = styled.button.attrs(({ type }) => ({
     primary
       ? colors.white
       : mode === 'dark'
-      ? colors.bgBtnSecondary
+      ? colors.button.secondary.bg
       : colors.black};
 
   cursor: pointer;
@@ -22,7 +22,7 @@ export const ButtonStyled = styled.button.attrs(({ type }) => ({
       ? colors.accent
       : mode === 'dark'
       ? 'transparent'
-      : colors.bgBtnSecondary};
+      : colors.button.secondary.bg};
 
   border: none;
   border-radius: 4px;

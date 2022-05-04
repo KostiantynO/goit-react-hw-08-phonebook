@@ -45,3 +45,15 @@ ns # npm start
 npx mrm@2 lint-staged
 npm i react-redux @reduxjs/toolkit redux-persist
 ```
+
+# `2022-05-02`: Split code for Contacts into separate modules.
+
+- [x] Filter
+- [x] ContactList
+- [x] Contact
+- [ ] Add Contact Form
+- [ ] Modal with Portal
+
+```shell
+npm i @mui/material @emotion/react @emotion/styled
+```

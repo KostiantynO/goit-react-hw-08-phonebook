@@ -12,7 +12,7 @@ export const DrawerBackdrop = styled.div`
   opacity: ${({ isOpen }) => (isOpen ? '0.99' : '0')};
 
   transition: ${({ theme }) => theme.transition};
-  transition-property: visibility, background-color, opacity;
+  transition-property: visibility, opacity;
 `;
 
 export const DrawerContent = styled.div`
@@ -23,10 +23,10 @@ export const DrawerContent = styled.div`
   top: 0;
   left: 100%;
   width: 60%;
-  max-width: 600px;
+  max-width: 280px;
   height: 100%;
   padding: 48px 40px;
-  background-color: ${({ theme }) => theme.colors.bgHero};
+  background-color: ${({ theme }) => theme.colors.drawer.bg};
 
   //prettier-ignore
   box-shadow:

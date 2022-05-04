@@ -12,12 +12,13 @@ import {
 } from 'redux-persist';
 
 import { persistedAuthReducer } from './auth';
-import { drawerReducer } from './drawer';
 import { langReducer } from './lang';
 import { themeReducer } from './theme';
+import { drawerReducer } from './drawer';
+import { modalReducer } from './modal';
 
 import { setupListeners } from '@reduxjs/toolkit/query';
-import { contactsApiReducer } from './contacts';
+import { contactsApiReducer, contactsMiddleware } from './contacts';
 import storage from 'redux-persist/lib/storage';
 
 const middleware = getDefaultMiddleware => [
@@ -27,6 +28,7 @@ const middleware = getDefaultMiddleware => [
       ignoreActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
   }),
+  contactsMiddleware,
 ];
 
 const rootPersistConfig = {
@@ -41,6 +43,7 @@ const rootReducer = combineReducers({
   lang: langReducer,
   theme: themeReducer,
   drawer: drawerReducer,
+  modal: modalReducer,
 });
 
 const persistedRootReducer = persistReducer(rootPersistConfig, rootReducer);

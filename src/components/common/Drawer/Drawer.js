@@ -20,6 +20,8 @@ export const Drawer = ({ children }) => {
   const hideDrawer = useCallback(() => dispatch(closeDrawer()), [dispatch]);
 
   useEffect(() => {
+    if (!isOpen) return;
+
     const handleKeydown = ({ code }) => {
       if (code === 'Escape') {
         hideDrawer();
@@ -27,23 +29,30 @@ export const Drawer = ({ children }) => {
     };
 
     window.addEventListener('keydown', handleKeydown);
-    console.log('Drawer didMount');
+    return () => window.removeEventListener('keydown', handleKeydown);
+  }, [hideDrawer, isOpen]);
 
-    return () => {
-      window.removeEventListener('keydown', handleKeydown);
-      console.log('Drawer will unmount');
-    };
-  }, [hideDrawer]);
-
-  const handleBackdropClick = event => {
-    if (event.currentTarget === event.target) {
-      hideDrawer();
-    }
-  };
+  const handleBackdropClick = useCallback(
+    event => {
+      if (event.currentTarget === event.target) {
+        hideDrawer();
+      }
+    },
+    [hideDrawer]
+  );
 
   return createPortal(
-    <DrawerBackdrop isOpen={isOpen} onClick={handleBackdropClick}>
-      <DrawerContent isOpen={isOpen}>
+    <DrawerBackdrop
+      title="DrawerBackdrop"
+      className="DrawerBackdrop"
+      isOpen={isOpen}
+      onClick={handleBackdropClick}
+    >
+      <DrawerContent
+        title="DrawerContent"
+        className="DrawerContent"
+        isOpen={isOpen}
+      >
         <CloseDrawerButton onClick={hideDrawer} icon>
           <AiOutlineClose size={32} />
         </CloseDrawerButton>

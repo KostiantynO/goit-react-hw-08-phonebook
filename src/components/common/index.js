@@ -1,5 +1,7 @@
 export * from './GlobalStyle';
 export * from './Drawer';
+export * from './Modal';
+export * from './Section';
 export * from './Container';
 export * from './ThemeSwitch';
 export * from './LangSwitch';
