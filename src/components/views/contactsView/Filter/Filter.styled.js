@@ -18,7 +18,8 @@ export const FilterInput = styled.input`
   width: 100%;
   font-size: inherit;
   padding: 4px;
-  background-color: ${({ theme }) => theme.colors.bgProjectCard};
+  color: ${({ theme }) => theme.colors.input.fg};
+  background-color: ${({ theme }) => theme.colors.input.bg};
 `;
 
 export const ClearFilterButton = styled(ButtonStyled)`
@@ -31,7 +32,7 @@ export const LoadingIconAbsolute = styled(LoadingIcon).attrs({
   height: 20,
 })`
   position: absolute;
-  right: -28px;
+  right: -38px;
 `;
 
 export const FilterDescription = styled.p`

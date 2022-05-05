@@ -20,7 +20,7 @@ npm i react-router-dom axios styled-components react-icons react-toastify
 ns # npm start
 ```
 
-# `package.json`
+### `package.json`
 
 ```json
   "homepage": "https://KostiantynO.github.io/goit-react-hw-08-phonebook/",
@@ -31,7 +31,7 @@ ns # npm start
   }
 ```
 
-# `index.js`
+### `index.js`
 
 ```js
 <BrowserRouter basename="/goit-react-hw-08-phonebook/">
@@ -39,14 +39,14 @@ ns # npm start
 </BrowserRouter>
 ```
 
-# `2022-04-29`
+### `2022-04-29`
 
 ```shell
 npx mrm@2 lint-staged
 npm i react-redux @reduxjs/toolkit redux-persist
 ```
 
-# `2022-05-02`: Split code for Contacts into separate modules.
+### `2022-05-02`: Split code for Contacts into separate modules.
 
 - [x] Filter
 - [x] ContactList
@@ -57,3 +57,21 @@ npm i react-redux @reduxjs/toolkit redux-persist
 ```shell
 npm i @mui/material @emotion/react @emotion/styled
 ```
+
+### `2022-05-04`:
+
+- [x] Add Contact Form
+- [x] Modal with Portal
+
+### `2022-05-06`: Homework errors
+
+- [x] make redirect to /contacts
+- [x] Invalidate whole LIST with RTK Query, not just one id
+- [x] Make apparent, how to add contact
+- [x] Remove upa
+- [x] Make persist token and fetchUser on mount
+- [x] Remove old files
+
+- [ ] Notifications - not correct login/password. Try again, but please check
+      you data.
+- [ ] Keep one url from axios? I do not know how to do it. Find it

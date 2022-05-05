@@ -1,7 +1,5 @@
 import { useLang } from 'hooks';
-import { useDispatch } from 'react-redux';
-import { toast } from 'react-toastify';
-import authOperations from 'redux/auth/authOperations';
+import PropTypes from 'prop-types';
 
 import {
   AuthButtonStyled,
@@ -11,35 +9,22 @@ import {
   AuthFormLabelText,
 } from '../AuthForm.styled';
 
-export const LoginForm = () => {
+export const LoginForm = ({ handleSubmit }) => {
   const lang = useLang();
-  const dispatch = useDispatch();
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    const form = e.target;
-    const email = form.elements.email.value.trim();
-    const password = form.elements.password.value.trim();
-    if (!email || !password) {
-      return toast.error(lang.authForm.formError);
-    }
-    dispatch(authOperations.logIn({ email, password }));
-    form.reset();
-  };
 
   return (
     <AuthFormStyled onSubmit={handleSubmit}>
       <AuthFormLabel>
         <AuthFormLabelText>{lang.authForm.email}</AuthFormLabelText>
-        <AuthFormInput autoComplete="" type="email" name="email" />
+        <AuthFormInput type="email" name="email" autoComplete="email" />
       </AuthFormLabel>
 
       <AuthFormLabel>
         <AuthFormLabelText>{lang.authForm.password}</AuthFormLabelText>
         <AuthFormInput
-          autoComplete="current-password"
           type="password"
           name="password"
+          autoComplete="current-password"
         />
       </AuthFormLabel>
 
@@ -50,4 +35,6 @@ export const LoginForm = () => {
   );
 };
 
-LoginForm.propTypes = {};
+LoginForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+};

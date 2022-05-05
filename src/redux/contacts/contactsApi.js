@@ -1,9 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import authSelectors from 'redux/auth/authSelectors';
+import { authSelectors } from 'redux/auth';
 
 const baseQuery = fetchBaseQuery({
   prepareHeaders: (headers, { getState }) => {
-    // const token = getState().auth.token;
     const token = authSelectors.getToken(getState());
 
     if (token) {
@@ -22,7 +21,8 @@ const contactsTypeObj = { type, id: 'LIST' };
 const contactsApi = createApi({
   reducerPath: 'contacts',
   baseQuery,
-
+  refetchOnMountOrArgChange: true,
+  refetchOnReconnect: true,
   tagTypes: [type],
 
   endpoints: builder => ({
@@ -57,7 +57,7 @@ const contactsApi = createApi({
         url: `${contactsURL}/${id}`,
         method: 'DELETE',
       }),
-      invalidatesTags: (result, error, id) => [{ type, id }],
+      invalidatesTags: (result, error, id) => [contactsTypeObj],
     }),
   }),
 });

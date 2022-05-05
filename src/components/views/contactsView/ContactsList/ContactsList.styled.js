@@ -2,17 +2,19 @@ import styled from 'styled-components';
 
 export const ContactsListStyled = styled.ul`
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(300px, 1fr);
   padding: 0 4px;
   gap: 12px;
 
+  max-width: 300px;
+
   @media screen and (min-width: ${({ theme }) => theme.breakpoints[1]}) {
     gap: 20px;
-    grid-template-columns: 1fr 1fr;
+    /* grid-template-columns: 1fr 1fr; */
   }
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints[2]}) {
-    grid-template-columns: 1fr 1fr 1fr;
+    /* grid-template-columns: 1fr 1fr 1fr; */
     gap: 30px;
   }
 `;

@@ -9,9 +9,8 @@ import {
 } from './UserMenu.styled';
 import { LangSwitch, ThemeSwitch } from 'components/common';
 import { useDispatch, useSelector } from 'react-redux';
-import authSelectors from 'redux/auth/authSelectors';
+import { authSelectors, authOperations } from 'redux/auth';
 import styled from 'styled-components';
-import authOperations from 'redux/auth/authOperations';
 import { useLang } from 'hooks';
 import { closeDrawer } from 'redux/drawer';
 

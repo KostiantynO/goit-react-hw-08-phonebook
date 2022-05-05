@@ -8,15 +8,21 @@ export const ContactStyled = styled.li`
   gap: 12px;
 
   padding: 4px 16px 4px 4px;
-  background-color: ${({ theme }) => theme.colors.contact.bg};
+  background-color: ${({ theme }) => theme.colors.bg};
 `;
 
 export const ContactEditName = styled.input`
   width: 55%;
+  color: ${({ theme }) => theme.colors.input.fg};
+  background-color: transparent;
+  border: none;
 `;
 
 export const ContactEditNumber = styled.input`
   width: 40%;
+  color: ${({ theme }) => theme.colors.input.fg};
+  background-color: transparent;
+  border: none;
 `;
 
 export const DeleteContactButton = styled(ButtonStyled)`

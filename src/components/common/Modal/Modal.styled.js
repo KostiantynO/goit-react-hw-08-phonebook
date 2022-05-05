@@ -7,13 +7,13 @@ export const SuperUkrainianBackdrop = styled.div`
   display: flex;
 
   backdrop-filter: blur(1px);
-  pointer-events: ${({ isModalOpen }) => (isModalOpen ? 'initial' : 'none')};
-  visibility: ${({ isModalOpen }) => (isModalOpen ? 'visible' : 'hidden')};
+  pointer-events: ${({ showModal }) => (showModal ? 'initial' : 'none')};
+  visibility: ${({ showModal }) => (showModal ? 'visible' : 'hidden')};
   background: linear-gradient(rgba(0, 87, 183, 0.8), rgb(255, 215, 0));
-  opacity: ${({ isModalOpen }) => (isModalOpen ? '0.99' : '0')};
+  opacity: ${({ showModal }) => (showModal ? '0.99' : '0')};
 
   transition: ${({ theme }) => theme.transition};
-  transform: ${({ isModalOpen }) => isModalOpen && 'scale(1.03)'};
+  transform: ${({ showModal }) => showModal && 'scale(1.03)'};
   transition-property: transform, visibility, opacity;
 `;
 

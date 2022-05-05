@@ -6,7 +6,7 @@ export const base = {
     body: 'Inter, system-ui, sans-serif',
   },
   fontSizes: ['12px', '14px', '16px', '20px', '24px'],
-  transition: '210ms cubic-bezier(0.4, 0, 0.2, 1)',
+  transition: '150ms cubic-bezier(0.4, 0, 0.2, 1)',
 };
 
 const common = {
@@ -34,6 +34,11 @@ export const light = {
   bg: '#ffffff',
   // bgHero: ,
   ...common,
+
+  input: {
+    bg: '#eeeeee',
+    fg: '#2a2a2a',
+  },
 
   app: {
     bg: '#FFFFFF',
@@ -78,7 +83,7 @@ export const light = {
   },
 
   contact: {
-    bg: '#212121',
+    bg: '#eaeaea',
     fg: '',
   },
 };
@@ -88,6 +93,10 @@ export const dark = {
   bg: '#2f303a',
   // bgHero: ,
   ...common,
+  input: {
+    bg: '#2a2a2a',
+    fg: '#eeeeee',
+  },
 
   app: {
     bg: '#212121',
@@ -132,7 +141,7 @@ export const dark = {
   },
 
   contact: {
-    bg: '#eaeaea',
+    bg: '#212121',
     fg: '',
   },
 };

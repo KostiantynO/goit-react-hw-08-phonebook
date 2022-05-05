@@ -1,9 +1,6 @@
 import { createPortal } from 'react-dom';
 import { getRefs } from 'utils';
-
-import { useCallback, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { closeModal, getIsModalOpen } from 'redux/modal';
+import { useEffect } from 'react';
 import {
   SuperUkrainianBackdrop,
   SuperUkrainianModal,
@@ -11,20 +8,17 @@ import {
 } from './Modal.styled';
 
 import { AiOutlineClose } from 'react-icons/ai';
+import PropTypes from 'prop-types';
 
 const { modalRoot } = getRefs();
 
-export const Modal = ({ children }) => {
-  const dispatch = useDispatch();
-  const isModalOpen = useSelector(getIsModalOpen);
-  const hideModal = useCallback(() => dispatch(closeModal()), [dispatch]);
-
+export const Modal = ({ children, showModal, toggleModal }) => {
   useEffect(() => {
-    if (!isModalOpen) return;
+    if (!showModal) return;
 
     const callback = ({ code }) => {
       if (code === 'Escape') {
-        hideModal();
+        toggleModal();
       }
     };
 
@@ -33,11 +27,11 @@ export const Modal = ({ children }) => {
     return () => {
       window.removeEventListener('keydown', callback);
     };
-  }, [hideModal, isModalOpen]);
+  }, [toggleModal, showModal]);
 
   const handleBackdropClick = event => {
     if (event.currentTarget === event.target) {
-      hideModal();
+      toggleModal();
     }
   };
 
@@ -46,14 +40,14 @@ export const Modal = ({ children }) => {
       title="modal__backdrop"
       className="modal__backdrop"
       onClick={handleBackdropClick}
-      isModalOpen={isModalOpen}
+      showModal={showModal}
     >
       <SuperUkrainianModal
         title="modal__content"
         className="modal__content"
-        isModalOpen={isModalOpen}
+        showModal={showModal}
       >
-        <CloseModalButton onClick={hideModal}>
+        <CloseModalButton onClick={toggleModal}>
           <AiOutlineClose size={32} />
         </CloseModalButton>
 
@@ -62,4 +56,9 @@ export const Modal = ({ children }) => {
     </SuperUkrainianBackdrop>,
     modalRoot
   );
+};
+
+Modal.propTypes = {
+  showModal: PropTypes.bool.isRequired,
+  toggleModal: PropTypes.func.isRequired,
 };

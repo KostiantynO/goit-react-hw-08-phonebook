@@ -47,6 +47,7 @@ const entities = {
 
     contactsView: {
       filterDesc: 'Filter by name/number',
+      title: 'Contacts',
     },
 
     upaView: {
@@ -100,6 +101,7 @@ const entities = {
 
     contactsView: {
       filterDesc: 'Фільтрувати за іменем/номером',
+      title: 'Контакти',
     },
 
     upaView: {

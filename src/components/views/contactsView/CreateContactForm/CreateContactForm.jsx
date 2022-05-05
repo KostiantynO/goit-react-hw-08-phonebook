@@ -1,41 +1,13 @@
 import { Button } from '@mui/material';
 import { LoadingIcon } from 'components/common';
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { toast } from 'react-toastify';
-import { useCreateContactMutation } from 'redux/contacts';
-import { closeModal } from 'redux/modal';
-import { CreateContactFormLabel } from '../ContactsList/ContactsList.styled';
+
 import { CreateContactFormStyled } from './CreateContactForm.styled';
+import PropTypes from 'prop-types';
+import { CreateContactFormLabel } from '../ContactsList/ContactsList.styled';
 
-export const CreateContactForm = () => {
-  const [createContact, { isLoading, isSuccess }] = useCreateContactMutation();
-
-  const dispatch = useDispatch();
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    const form = e.target;
-    const name = form.elements.name.value.trim();
-    const number = form.elements.number.value.trim();
-
-    if (!name || !number) {
-      return toast.error('Please fill name and phone');
-    }
-
-    createContact({ name, number });
-    form.reset();
-  };
-
-  useEffect(() => {
-    if (isSuccess) {
-      toast.success('Contact created');
-      dispatch(closeModal());
-    }
-  }, [dispatch, isSuccess]);
-
+export const CreateContactForm = ({ onSubmit, isCreating }) => {
   return (
-    <CreateContactFormStyled onSubmit={handleSubmit} autoComplete="off">
+    <CreateContactFormStyled onSubmit={onSubmit} autoComplete="off">
       <CreateContactFormLabel>
         <p>Name</p>
         <input
@@ -58,10 +30,15 @@ export const CreateContactForm = () => {
         />
       </CreateContactFormLabel>
 
-      <Button type="submit" variant="contained" disabled={isLoading}>
-        {isLoading && <LoadingIcon />}
+      <Button type="submit" variant="contained" disabled={isCreating}>
+        {isCreating && <LoadingIcon />}
         Create Contact
       </Button>
     </CreateContactFormStyled>
   );
+};
+
+CreateContactForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  isCreating: PropTypes.bool.isRequired,
 };

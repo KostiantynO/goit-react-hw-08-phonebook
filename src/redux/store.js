@@ -15,7 +15,6 @@ import { persistedAuthReducer } from './auth';
 import { langReducer } from './lang';
 import { themeReducer } from './theme';
 import { drawerReducer } from './drawer';
-import { modalReducer } from './modal';
 
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { contactsApiReducer, contactsMiddleware } from './contacts';
@@ -43,7 +42,6 @@ const rootReducer = combineReducers({
   lang: langReducer,
   theme: themeReducer,
   drawer: drawerReducer,
-  modal: modalReducer,
 });
 
 const persistedRootReducer = persistReducer(rootPersistConfig, rootReducer);

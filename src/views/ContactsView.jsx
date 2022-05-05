@@ -1,8 +1,10 @@
-import { useMemo, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
-import { getVisibleContacts, useReadContactsQuery } from 'redux/contacts';
-import { openModal } from 'redux/modal';
+import {
+  getVisibleContacts,
+  useCreateContactMutation,
+  useReadContactsQuery,
+} from 'redux/contacts';
 import { useLang } from 'hooks';
 
 import { AiFillPlusCircle } from 'react-icons/ai';
@@ -18,6 +20,7 @@ import { FilterDescription } from 'components/views/contactsView/Filter/Filter.s
 import styled from 'styled-components';
 
 import { Button } from '@mui/material';
+import { toast } from 'react-toastify';
 const ContactsContainer = styled(Container)``;
 
 const FilterContainer = styled.div`
@@ -28,9 +31,18 @@ const FilterContainer = styled.div`
 
 const ContactsView = () => {
   const { data: contacts, isFetching } = useReadContactsQuery();
+  const [createContact, { isLoading: isCreating, isSuccess: isCreated }] =
+    useCreateContactMutation();
+
+  const [showModal, setShowModal] = useState(false);
+  const toggleModal = useCallback(() => setShowModal(!showModal), [showModal]);
+
+  useEffect(() => {
+    if (!isCreated) return;
+    toast.success('Contact created');
+  }, [isCreated]);
+
   const lang = useLang();
-  const dispatch = useDispatch();
-  const onModalOpen = () => dispatch(openModal());
 
   const [filter, setFilter] = useState('');
   const visibleContacts = useMemo(
@@ -38,10 +50,28 @@ const ContactsView = () => {
     [contacts, filter]
   );
 
+  const onSubmitCreateContact = useCallback(
+    e => {
+      e.preventDefault();
+      const form = e.target;
+      const name = form.elements.name.value.trim();
+      const number = form.elements.number.value.trim();
+
+      if (!name || !number) {
+        return toast.error('Please fill name and phone');
+      }
+
+      createContact({ name, number });
+      form.reset();
+      toggleModal();
+    },
+    [createContact, toggleModal]
+  );
+
   return (
     <Section>
       <ContactsContainer>
-        <h1>Contacts</h1>
+        <h1>{lang.contactsView.title}</h1>
 
         <FilterDescription>{lang.contactsView.filterDesc}</FilterDescription>
 
@@ -52,13 +82,21 @@ const ContactsView = () => {
             setFilter={setFilter}
           />
 
-          <Button color="info" variant="contained" onClick={onModalOpen}>
-            <AiFillPlusCircle size={24} />
+          <Button
+            color="info"
+            variant="contained"
+            endIcon={<AiFillPlusCircle size={24} />}
+            onClick={toggleModal}
+          >
+            <span>Create contact</span>
           </Button>
         </FilterContainer>
 
-        <Modal>
-          <CreateContactForm />
+        <Modal showModal={showModal} toggleModal={toggleModal}>
+          <CreateContactForm
+            onSubmit={onSubmitCreateContact}
+            isCreating={isCreating}
+          />
         </Modal>
 
         {contacts && <ContactsList contacts={visibleContacts} />}

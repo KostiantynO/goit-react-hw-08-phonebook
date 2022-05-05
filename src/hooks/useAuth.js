@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import authSelectors from 'redux/auth/authSelectors';
+import { authSelectors } from 'redux/auth';
 
 export const useAuth = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);

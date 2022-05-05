@@ -3,7 +3,7 @@
 import { useLang } from 'hooks';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import authOperations from 'redux/auth/authOperations';
+import { authOperations } from 'redux/auth';
 
 import {
   AuthButtonStyled,
