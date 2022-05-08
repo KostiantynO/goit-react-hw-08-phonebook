@@ -1,8 +1,7 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { authOperations, authSelectors } from 'redux/auth';
+import { authOperations } from 'redux/auth';
 import { useLang } from 'hooks';
-import { Navigate } from 'react-router-dom';
 
 import { Section } from 'components/common';
 import {
@@ -12,7 +11,6 @@ import {
 } from 'components/views';
 
 const LoginView = () => {
-  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const dispatch = useDispatch();
   const lang = useLang();
 
@@ -25,18 +23,16 @@ const LoginView = () => {
       return toast.error(lang.authForm.formError);
     }
 
-    dispatch(authOperations.logIn({ email, password }));
+    dispatch(authOperations.logIn({ email, password, lang }));
     form.reset();
   };
 
-  return isLoggedIn ? (
-    <Navigate to="/contacts" replace={true} />
-  ) : (
+  return (
     <Section>
       <AuthViewContainer>
         <AuthPageIndicator />
 
-        <LoginForm handleSubmit={handleSubmit} />
+        <LoginForm handleSubmit={handleSubmit} lang={lang} />
       </AuthViewContainer>
     </Section>
   );

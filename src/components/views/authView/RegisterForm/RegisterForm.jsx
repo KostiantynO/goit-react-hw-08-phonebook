@@ -1,10 +1,5 @@
 // import PropTypes from 'prop-types'
 
-import { useLang } from 'hooks';
-import { useDispatch } from 'react-redux';
-import { toast } from 'react-toastify';
-import { authOperations } from 'redux/auth';
-
 import {
   AuthButtonStyled,
   AuthFormInput,
@@ -12,26 +7,11 @@ import {
   AuthFormStyled,
   AuthFormLabelText,
 } from '../AuthForm.styled';
+import PropTypes from 'prop-types';
 
-export const RegisterForm = () => {
-  const lang = useLang();
-  const dispatch = useDispatch();
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    const form = e.target;
-    const name = form.elements.name.value.trim();
-    const email = form.elements.email.value.trim();
-    const password = form.elements.password.value.trim();
-    if (!name || !email || !password) {
-      return toast.error(lang.authForm.formError);
-    }
-    dispatch(authOperations.register({ name, email, password }));
-    form.reset();
-  };
-
+export const RegisterForm = ({ onSubmit, lang }) => {
   return (
-    <AuthFormStyled onSubmit={handleSubmit}>
+    <AuthFormStyled onSubmit={onSubmit}>
       <AuthFormLabel>
         <AuthFormLabelText>{lang.authForm.name}</AuthFormLabelText>
         <AuthFormInput autoComplete="name" type="text" name="name" />
@@ -58,4 +38,7 @@ export const RegisterForm = () => {
   );
 };
 
-RegisterForm.propTypes = {};
+RegisterForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  lang: PropTypes.object.isRequired,
+};

@@ -1,14 +1,13 @@
 const ids = { eng: 'eng', ukr: 'ukr' };
 
 const entities = {
-  [ids.eng]: {
+  eng: {
     // Views
     main: 'main',
     todos: 'todos',
     register: 'register',
     login: 'login',
     contacts: 'contacts',
-    upa: 'UPA',
 
     // HomeView
     welcomeMessage: 'Welcome page of our service 💁‍♀️',
@@ -39,30 +38,27 @@ const entities = {
 
     registerView: {
       currentPage: 'Sign Up',
+      registerError: 'Please try different name or email',
     },
 
     loginView: {
       currentPage: 'Sign In',
+      loginError: 'Please check your mail or password',
     },
 
     contactsView: {
       filterDesc: 'Filter by name/number',
       title: 'Contacts',
     },
-
-    upaView: {
-      upa: 'Ukrainian Insurgent Army (resistance to the nkvd and the execution of civilians)',
-    },
   },
 
-  [ids.ukr]: {
+  ukr: {
     // pages
     main: 'головна',
     todos: 'замітки',
     register: 'реєстрація',
     login: 'логін',
     contacts: 'контакти',
-    upa: 'УПА',
 
     // HomeView
     welcomeMessage: 'Вітальна сторінка нашого сервісу 💁‍♀️',
@@ -93,19 +89,18 @@ const entities = {
 
     registerView: {
       currentPage: 'Реєстрація',
+      registerError: "Будь ласка, спробуйте ввести інше ім'я або пошту",
     },
 
+    // lang.loginView.loginError`Please check your email and password`
     loginView: {
       currentPage: 'Авторизація',
+      loginError: 'Будь ласка, перевірте свою пошту або пароль',
     },
 
     contactsView: {
       filterDesc: 'Фільтрувати за іменем/номером',
       title: 'Контакти',
-    },
-
-    upaView: {
-      upa: 'Українська повстанська армія (спротив нквд та розстрілу мирного населення)',
     },
   },
 };

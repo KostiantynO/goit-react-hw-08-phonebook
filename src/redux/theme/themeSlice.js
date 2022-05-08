@@ -5,12 +5,15 @@ import { themes } from 'components/App/theme';
 export const themeSlice = createSlice({
   name: 'theme',
   initialState: {
-    currentTheme: themes.ids.light,
+    mode: themes.ids.light,
   },
   reducers: {
-    setTheme: (_, { payload }) => themes.ids[payload],
+    setTheme: (state, { payload }) => {
+      state.mode = themes.ids[payload];
+    },
   },
 });
 
+export const getCurrentTheme = state => state.theme.mode;
 export const { setTheme } = themeSlice.actions;
 export const themeReducer = themeSlice.reducer;

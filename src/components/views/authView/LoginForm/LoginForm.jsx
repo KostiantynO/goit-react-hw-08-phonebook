@@ -1,4 +1,3 @@
-import { useLang } from 'hooks';
 import PropTypes from 'prop-types';
 
 import {
@@ -9,9 +8,7 @@ import {
   AuthFormLabelText,
 } from '../AuthForm.styled';
 
-export const LoginForm = ({ handleSubmit }) => {
-  const lang = useLang();
-
+export const LoginForm = ({ handleSubmit, lang }) => {
   return (
     <AuthFormStyled onSubmit={handleSubmit}>
       <AuthFormLabel>
@@ -37,4 +34,5 @@ export const LoginForm = ({ handleSubmit }) => {
 
 LoginForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
+  lang: PropTypes.object.isRequired,
 };

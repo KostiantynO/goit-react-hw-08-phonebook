@@ -13,14 +13,6 @@ export const ContainerStyled = styled.div`
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints[2]}) {
     max-width: ${({ theme }) => theme.breakpoints[2]}; // 1200
-  }
-
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints[3]}) {
-    max-width: ${({ theme }) => theme.breakpoints[3]}; // 1440
     padding: 0 80px;
-  }
-
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints[4]}) {
-    max-width: ${({ theme }) => theme.breakpoints[4]}; // 1600
   }
 `;

@@ -4,19 +4,22 @@ import {
   ThemeSwitchStyled,
 } from './ThemeSwitch.styled';
 import { useTheme } from 'styled-components';
+import { useDispatch } from 'react-redux';
+import { setTheme } from 'redux/theme';
 
 export const ThemeSwitch = () => {
-  const { mode, setMode } = useTheme();
+  const { mode } = useTheme();
+  const dispatch = useDispatch();
 
   return (
     <ThemeSwitchStyled>
-      <NightButton onClick={() => setMode('dark')}>
+      <NightButton onClick={() => dispatch(setTheme('dark'))}>
         {mode === 'dark' ? '🌒' : '🌜'}
       </NightButton>
 
       <span />
 
-      <DayButton onClick={() => setMode('light')}>🌞</DayButton>
+      <DayButton onClick={() => dispatch(setTheme('light'))}>🌞</DayButton>
     </ThemeSwitchStyled>
   );
 };

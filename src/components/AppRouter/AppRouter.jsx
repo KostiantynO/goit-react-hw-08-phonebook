@@ -1,7 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from 'components/Layout';
 import { chunk } from 'utils';
-import { RestrictedRoute } from './RestrictedRoute';
+import { PrivateRoute } from './PrivateRoute';
+import { PublicRoute } from './PublicRoute';
 
 const LoginView = chunk('LoginView');
 const ContactsView = chunk('ContactsView');
@@ -13,21 +14,50 @@ export const AppRouter = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<HomeView />} />
+        <Route
+          index
+          element={
+            <PublicRoute>
+              <HomeView />
+            </PublicRoute>
+          }
+        />
+
+        <Route
+          path="register"
+          element={
+            <PublicRoute restricted navigateTo="/contacts">
+              <RegisterView />
+            </PublicRoute>
+          }
+        />
+
+        <Route
+          path="login"
+          element={
+            <PublicRoute restricted navigateTo="/contacts">
+              <LoginView />
+            </PublicRoute>
+          }
+        />
 
         <Route
           path="contacts"
           element={
-            <RestrictedRoute>
+            <PrivateRoute navigateTo="/login">
               <ContactsView />
-            </RestrictedRoute>
+            </PrivateRoute>
           }
         />
 
-        <Route path="login" element={<LoginView />} />
-        <Route path="register" element={<RegisterView />} />
-
-        <Route path="*" element={<NotFoundView />} />
+        <Route
+          path="*"
+          element={
+            <PublicRoute>
+              <NotFoundView />
+            </PublicRoute>
+          }
+        />
       </Route>
     </Routes>
   );

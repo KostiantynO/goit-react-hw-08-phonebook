@@ -1,9 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import authSelectors from './authSelectors';
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
-
-const { log } = console;
 
 const axiosToken = {
   set(token) {
@@ -17,26 +16,30 @@ const axiosToken = {
 
 const register = createAsyncThunk(
   'auth/register',
-  async (credentials, { rejectWithValue }) => {
+  async ({ lang, ...credentials }, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/users/signup', credentials);
+      console.log('data', data);
       axiosToken.set(data.token);
       return data;
-    } catch (error) {
-      rejectWithValue(error);
+    } catch ({ message, response: { data, status } }) {
+      toast.error(lang.registerView.registerError);
+      return rejectWithValue({ message, data, status });
     }
   }
 );
 
 const logIn = createAsyncThunk(
   'auth/logIn',
-  async (credentials, { rejectWithValue }) => {
+  async ({ lang, ...credentials }, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/users/login', credentials);
+
       axiosToken.set(data.token);
       return data;
-    } catch (error) {
-      rejectWithValue(error);
+    } catch ({ message, response: { data, status } }) {
+      toast.error(lang.loginView.loginError);
+      return rejectWithValue({ message, data, status });
     }
   }
 );
@@ -47,33 +50,32 @@ const logOut = createAsyncThunk(
     try {
       await axios.post('/users/logout');
       axiosToken.unset();
-    } catch (error) {
-      rejectWithValue(error);
+    } catch ({ message, response: { data, status } }) {
+      return rejectWithValue({ message, data, status });
     }
   }
 );
 
-const getCurrentUser = createAsyncThunk(
-  'auth/getCurrentUser',
+const refresh = createAsyncThunk(
+  'auth/refresh',
   async (_, { getState, rejectWithValue }) => {
     const state = getState();
     const persistedToken = authSelectors.getToken(state);
 
     if (!persistedToken) {
-      throw new Error(`persistedToken is: ${persistedToken}`);
+      return rejectWithValue(`persistedToken is: ${persistedToken}`);
     }
 
     axiosToken.set(persistedToken);
-    log({ persistedToken });
 
     try {
       const { data } = await axios.get('/users/current');
       return data;
-    } catch (error) {
-      rejectWithValue(error);
+    } catch ({ message, response: { data, status } }) {
+      return rejectWithValue({ message, data, status });
     }
   }
 );
 
-const authOperations = { register, logIn, logOut, getCurrentUser };
+const authOperations = { register, logIn, logOut, refresh };
 export default authOperations;

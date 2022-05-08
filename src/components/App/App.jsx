@@ -9,11 +9,11 @@ import { ThemeProvider } from 'styled-components';
 import { AppStyled } from './App.styled';
 
 export const App = () => {
-  const theme = useSetTheme();
   const dispatch = useDispatch();
+  const theme = useSetTheme(dispatch);
 
   useEffect(() => {
-    dispatch(authOperations.getCurrentUser());
+    dispatch(authOperations.refresh());
   }, [dispatch]);
 
   return (

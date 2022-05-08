@@ -63,7 +63,7 @@ npm i @mui/material @emotion/react @emotion/styled
 - [x] Add Contact Form
 - [x] Modal with Portal
 
-### `2022-05-06`: Homework errors
+### `2022-05-06`: Homework errors after mentor review:
 
 - [x] make redirect to /contacts
 - [x] Invalidate whole LIST with RTK Query, not just one id
@@ -72,6 +72,8 @@ npm i @mui/material @emotion/react @emotion/styled
 - [x] Make persist token and fetchUser on mount
 - [x] Remove old files
 
-- [ ] Notifications - not correct login/password. Try again, but please check
-      you data.
-- [ ] Keep one url from axios? I do not know how to do it. Find it
+### `2022-05-06`: Homework errors after mentor review:
+
+- [ x Notifications - not correct login/password. "Please check you password."
+- [ ] Keep one url from axios? // I do not know how to combine two approaches
+      with axios.
