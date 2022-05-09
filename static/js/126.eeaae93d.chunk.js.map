@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/126.eeaae93d.chunk.js","mappings":"sKAIA,UAFqB,kBAAM,SAAC,KAAD,CAAUA,GAAG,IAAIC,SAAS","sources":["views/NotFoundView.jsx"],"sourcesContent":["import { Navigate } from 'react-router-dom';\n\nconst NotFoundView = () => <Navigate to=\"/\" replace={true} />;\n\nexport default NotFoundView;\n"],"names":["to","replace"],"sourceRoot":""}
