@@ -12,7 +12,10 @@ export const Navigation = () => {
       <NavLinkStyled to="/">{lang.main}</NavLinkStyled>
 
       {isLoggedIn && (
-        <NavLinkStyled to="/contacts">{lang.contacts}</NavLinkStyled>
+        <>
+          <NavLinkStyled to="/contacts">{lang.contacts}</NavLinkStyled>
+          <NavLinkStyled to="/upload">{lang.upload}</NavLinkStyled>
+        </>
       )}
     </NavigationStyled>
   );

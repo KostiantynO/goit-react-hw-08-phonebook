@@ -72,8 +72,8 @@ npm i @mui/material @emotion/react @emotion/styled
 - [x] Make persist token and fetchUser on mount
 - [x] Remove old files
 
-### `2022-05-06`: Homework errors after mentor review:
+### `2022-05-08`: Homework errors after mentor review:
 
-- [ x Notifications - not correct login/password. "Please check you password."
+- [x] Notifications - not correct login/password. "Please check you password."
 - [ ] Keep one url from axios? // I do not know how to combine two approaches
       with axios.

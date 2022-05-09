@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
 import {
   getVisibleContacts,
@@ -31,16 +31,10 @@ const FilterContainer = styled.div`
 
 const ContactsView = () => {
   const { data: contacts, isFetching } = useReadContactsQuery();
-  const [createContact, { isLoading: isCreating, isSuccess: isCreated }] =
-    useCreateContactMutation();
+  const [createContact, { isLoading: isCreating }] = useCreateContactMutation();
 
   const [showModal, setShowModal] = useState(false);
   const toggleModal = useCallback(() => setShowModal(!showModal), [showModal]);
-
-  useEffect(() => {
-    if (!isCreated) return;
-    toast.success('Contact created');
-  }, [isCreated]);
 
   const lang = useLang();
 
@@ -73,13 +67,14 @@ const ContactsView = () => {
       <ContactsContainer>
         <h1>{lang.contactsView.title}</h1>
 
-        <FilterDescription>{lang.contactsView.filterDesc}</FilterDescription>
+        <FilterDescription>{lang.contactsView.filter.desc}</FilterDescription>
 
         <FilterContainer>
           <Filter
             isFetching={isFetching}
             filter={filter}
             setFilter={setFilter}
+            lang={lang}
           />
 
           <Button
@@ -88,7 +83,7 @@ const ContactsView = () => {
             endIcon={<AiFillPlusCircle size={24} />}
             onClick={toggleModal}
           >
-            <span>Create contact</span>
+            <span>{lang.contactsView.createContactButtonLabel}</span>
           </Button>
         </FilterContainer>
 
@@ -96,6 +91,7 @@ const ContactsView = () => {
           <CreateContactForm
             onSubmit={onSubmitCreateContact}
             isCreating={isCreating}
+            lang={lang}
           />
         </Modal>
 

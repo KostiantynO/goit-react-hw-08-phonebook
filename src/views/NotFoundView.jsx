@@ -1,19 +1,5 @@
-import { Section, Container } from 'components/common';
-import React from 'react';
-// import PropTypes from 'prop-types';
+import { Navigate } from 'react-router-dom';
 
-const NotFoundView = () => {
-  return (
-    <div>
-      <Section>
-        <Container>
-          <h1 style={{ textAlign: 'center' }}>Page not found</h1>
-        </Container>
-      </Section>
-    </div>
-  );
-};
-
-NotFoundView.propTypes = {};
+const NotFoundView = () => <Navigate to="/" replace={true} />;
 
 export default NotFoundView;

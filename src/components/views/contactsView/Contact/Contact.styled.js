@@ -29,4 +29,5 @@ export const DeleteContactButton = styled(ButtonStyled)`
   position: absolute;
   top: -8px;
   right: -12px;
+  background-color: ${({ theme }) => theme.colors.bg};
 `;

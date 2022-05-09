@@ -5,11 +5,11 @@ import { CreateContactFormStyled } from './CreateContactForm.styled';
 import PropTypes from 'prop-types';
 import { CreateContactFormLabel } from '../ContactsList/ContactsList.styled';
 
-export const CreateContactForm = ({ onSubmit, isCreating }) => {
+export const CreateContactForm = ({ onSubmit, isCreating, lang }) => {
   return (
     <CreateContactFormStyled onSubmit={onSubmit} autoComplete="off">
       <CreateContactFormLabel>
-        <p>Name</p>
+        <p>{lang.contactsView.createContactForm.nameLabel}</p>
         <input
           type="text"
           name="name"
@@ -20,7 +20,7 @@ export const CreateContactForm = ({ onSubmit, isCreating }) => {
       </CreateContactFormLabel>
 
       <CreateContactFormLabel>
-        <p>Number</p>
+        <p>{lang.contactsView.createContactForm.numberLabel}</p>
         <input
           type="tel"
           name="number"
@@ -32,7 +32,7 @@ export const CreateContactForm = ({ onSubmit, isCreating }) => {
 
       <Button type="submit" variant="contained" disabled={isCreating}>
         {isCreating && <LoadingIcon />}
-        Create Contact
+        {lang.contactsView.createContactButtonLabel}
       </Button>
     </CreateContactFormStyled>
   );
@@ -41,4 +41,5 @@ export const CreateContactForm = ({ onSubmit, isCreating }) => {
 CreateContactForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   isCreating: PropTypes.bool.isRequired,
+  lang: PropTypes.object.isRequired,
 };

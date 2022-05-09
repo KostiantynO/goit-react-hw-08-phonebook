@@ -19,7 +19,7 @@ export const FilterInput = styled.input`
   font-size: inherit;
   padding: 4px;
   color: ${({ theme }) => theme.colors.input.fg};
-  background-color: ${({ theme }) => theme.colors.input.bg};
+  background-color: ${({ theme }) => theme.colors.bg};
 `;
 
 export const ClearFilterButton = styled(ButtonStyled)`

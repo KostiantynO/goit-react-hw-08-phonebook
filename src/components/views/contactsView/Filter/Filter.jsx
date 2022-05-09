@@ -8,7 +8,7 @@ import {
 
 import PropTypes from 'prop-types';
 
-export const Filter = ({ filter, setFilter, isFetching }) => {
+export const Filter = ({ filter, setFilter, isFetching, lang }) => {
   const onSetFilter = e => setFilter(e.target.value);
   const clearFilter = () => setFilter('');
 
@@ -18,7 +18,9 @@ export const Filter = ({ filter, setFilter, isFetching }) => {
         <FilterInput value={filter} onChange={onSetFilter} />
       </FilterLabel>
 
-      <ClearFilterButton onClick={clearFilter}>Clear</ClearFilterButton>
+      <ClearFilterButton onClick={clearFilter}>
+        {lang.contactsView.filter.clearFilterButtonLabel}
+      </ClearFilterButton>
 
       {isFetching && <LoadingIconAbsolute />}
     </FilterStyled>
@@ -29,4 +31,5 @@ Filter.propTypes = {
   filter: PropTypes.string.isRequired,
   setFilter: PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,
+  lang: PropTypes.object.isRequired,
 };

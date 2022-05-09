@@ -7,3 +7,11 @@ export const SectionStyled = styled.section`
     padding: 60px 0;
   }
 `;
+
+export const SectionTitle = styled.h1`
+  ::first-letter {
+    font-size: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+`;

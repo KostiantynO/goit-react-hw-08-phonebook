@@ -9,6 +9,7 @@ const ContactsView = chunk('ContactsView');
 const RegisterView = chunk('RegisterView');
 const HomeView = chunk('HomeView');
 const NotFoundView = chunk('NotFoundView');
+const UploadView = chunk('UploadView');
 
 export const AppRouter = () => {
   return (
@@ -51,13 +52,15 @@ export const AppRouter = () => {
         />
 
         <Route
-          path="*"
+          path="upload"
           element={
-            <PublicRoute>
-              <NotFoundView />
-            </PublicRoute>
+            <PrivateRoute navigateTo="/login">
+              <UploadView />
+            </PrivateRoute>
           }
         />
+
+        <Route path="*" element={<NotFoundView />} />
       </Route>
     </Routes>
   );

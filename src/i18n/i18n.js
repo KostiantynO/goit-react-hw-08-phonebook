@@ -8,6 +8,7 @@ const entities = {
     register: 'register',
     login: 'login',
     contacts: 'contacts',
+    upload: 'upload',
 
     // HomeView
     welcomeMessage: 'Welcome page of our service 💁‍♀️',
@@ -47,8 +48,22 @@ const entities = {
     },
 
     contactsView: {
-      filterDesc: 'Filter by name/number',
+      filter: {
+        clearFilterButtonLabel: 'Clear',
+        desc: 'Filter by name/number',
+      },
+
       title: 'Contacts',
+      createContactButtonLabel: 'Add contact',
+      createContactForm: {
+        nameLabel: 'Name',
+        numberLabel: 'Number',
+      },
+    },
+
+    uploadView: {
+      addFileInputLabel: 'Choose file',
+      addFileButtonLabel: 'Upload',
     },
   },
 
@@ -59,6 +74,7 @@ const entities = {
     register: 'реєстрація',
     login: 'логін',
     contacts: 'контакти',
+    upload: 'завантажити',
 
     // HomeView
     welcomeMessage: 'Вітальна сторінка нашого сервісу 💁‍♀️',
@@ -99,8 +115,21 @@ const entities = {
     },
 
     contactsView: {
-      filterDesc: 'Фільтрувати за іменем/номером',
+      filter: {
+        clearFilterButtonLabel: 'Очистити',
+        desc: 'Фільтрувати за іменем/номером',
+      },
       title: 'Контакти',
+      createContactButtonLabel: 'Додати контакт',
+      createContactForm: {
+        nameLabel: "Ім'я",
+        numberLabel: 'Номер',
+      },
+    },
+
+    uploadView: {
+      addFileInputLabel: 'Обрати файл',
+      addFileButtonLabel: 'Завантажити',
     },
   },
 };
