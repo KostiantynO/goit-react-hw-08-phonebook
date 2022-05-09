@@ -77,3 +77,8 @@ npm i @mui/material @emotion/react @emotion/styled
 - [x] Notifications - not correct login/password. "Please check you password."
 - [ ] Keep one url from axios? // I do not know how to combine two approaches
       with axios.
+
+### `2022-05-09`: Error in persisted state:
+
+- [x] Adds temporary buttons to Purge Persisted state (in localStorage), before
+      App is rendered. (I will remove buttons after mentor review).

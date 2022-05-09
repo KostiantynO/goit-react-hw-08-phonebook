@@ -5,25 +5,19 @@ import { Container, Section } from 'components/common';
 
 import styled from 'styled-components';
 
-// import { Button } from '@mui/material';
+import { Button } from '@mui/material';
 import { toast } from 'react-toastify';
 import { SectionTitle } from 'components/common/Section/Section.styled';
 import axios from 'axios';
 import { useDropzone } from 'react-dropzone';
 
 const UploadContainer = styled(Container)``;
-// const UploadForm = styled.form`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: flex-start;
-//   gap: 30px;
-// `;
+const UploadForm = styled.form`
+  display: flex;
+  flex-direction: column;
 
-// const UploadLabel = styled.label`
-//   display: flex;
-//   flex-direction: column;
-//   gap: 20px;
-// `;
+  gap: 30px;
+`;
 
 const { log, error } = console;
 
@@ -81,11 +75,7 @@ const rejectedFileItems = rejectedFiles =>
     </li>
   ));
 
-const ThumbsContainer = styled.aside`
-  /* display: flex;
-  flex-wrap: wrap;
-  margin-top: 16px; */
-`;
+const ThumbsContainer = styled.aside``;
 
 const ThumbList = styled.ul`
   display: flex;
@@ -135,23 +125,24 @@ const thumbItems = files =>
           onLoad={() => {
             URL.revokeObjectURL(file.preview);
           }}
-          alt={file.name}
+          alt={file.path}
         />
       </ThumbInner>
     </Thumb>
   ));
 
-const FileDropArea = () => {
-  const [files, setFiles] = useState([]);
-
-  const onDrop = useCallback(acceptedFiles => {
-    setFiles(
-      acceptedFiles.map(file => ({
-        ...file,
-        preview: URL.createObjectURL(file),
-      }))
-    );
-  }, []);
+const FileDropArea = ({ files, setFiles }) => {
+  const onDrop = useCallback(
+    acceptedFiles => {
+      setFiles(
+        acceptedFiles.map(file => ({
+          ...file,
+          preview: URL.createObjectURL(file),
+        }))
+      );
+    },
+    [setFiles]
+  );
 
   const {
     acceptedFiles,
@@ -192,13 +183,24 @@ const FileDropArea = () => {
       </DropArea>
 
       <ThumbsContainer>
-        <ThumbList>{thumbItems(files)}</ThumbList>
+        {acceptedFiles?.length > 0 && (
+          <ThumbList>{thumbItems(files)}</ThumbList>
+        )}
 
-        <h3>Accepted files</h3>
-        <ul>{acceptedFileItems(acceptedFiles)}</ul>
+        {acceptedFiles?.length > 0 && (
+          <>
+            <h3>Accepted files</h3>
 
-        <h3>Rejected files</h3>
-        <ul>{rejectedFileItems(fileRejections)}</ul>
+            <ul>{acceptedFileItems(acceptedFiles)}</ul>
+          </>
+        )}
+
+        {fileRejections?.length > 0 && (
+          <>
+            <h3>Rejected files</h3>
+            <ul>{rejectedFileItems(fileRejections)}</ul>
+          </>
+        )}
       </ThumbsContainer>
     </>
   );
@@ -206,41 +208,44 @@ const FileDropArea = () => {
 
 const ContactsView = () => {
   const lang = useLang();
+  const [files, setFiles] = useState([]);
 
-  const onSubmitUpload = useCallback(e => {
-    e.preventDefault();
-    const form = e.target;
-    const file = form.elements.file.files[0];
+  const onSubmitUpload = useCallback(
+    async e => {
+      e.preventDefault();
+      const form = e.target;
+      // const file = form.elements.file.files[0];
+      console.log({ files });
 
-    const formData = new FormData();
-    formData.append('image', file, file.name);
+      if (!files.length) {
+        return toast.error('Please add file');
+      }
 
-    axios.post('/upload', formData).then(log).catch(error);
+      const formData = new FormData();
+      files.forEach(file => formData.append('image', file, file.name));
 
-    if (!file) {
-      return toast.error('Please add file');
-    }
-
-    // form.reset();
-  }, []);
+      try {
+        await axios.post('/upload', formData).then(log).catch(error);
+      } catch (error) {
+        console.log(error);
+      }
+      form.reset();
+    },
+    [files]
+  );
 
   return (
     <Section>
       <UploadContainer>
         <SectionTitle>{lang.upload}</SectionTitle>
 
-        <FileDropArea />
-
-        {/* <UploadForm onSubmit={onSubmitUpload}>
-          <UploadLabel>
-            <span>{lang.uploadView.addFileInputLabel}</span>
-            <input type="file" name="file" />
-          </UploadLabel>
+        <UploadForm onSubmit={onSubmitUpload}>
+          <FileDropArea files={files} setFiles={setFiles} />
 
           <Button type="submit" variant="contained">
             {lang.uploadView.addFileButtonLabel}
           </Button>
-        </UploadForm> */}
+        </UploadForm>
       </UploadContainer>
     </Section>
   );

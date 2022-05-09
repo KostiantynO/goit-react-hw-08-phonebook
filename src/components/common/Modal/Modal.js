@@ -39,7 +39,7 @@ export const Modal = ({ children, showModal, toggleModal }) => {
     <SuperUkrainianBackdrop
       title="modal__backdrop"
       className="modal__backdrop"
-      onClick={handleBackdropClick}
+      onMouseDown={handleBackdropClick}
       showModal={showModal}
     >
       <SuperUkrainianModal
